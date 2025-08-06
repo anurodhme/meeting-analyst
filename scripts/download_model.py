@@ -2,38 +2,43 @@
 
 import os
 from pathlib import Path
-from huggingface_hub import snapshot_download
+from huggingface_hub import hf_hub_download  # <-- single-file downloader
 
 # --- Configuration ---
-MODEL_REPO = "Qwen/Qwen3-0.6B"        # New repository
-MODEL_DIR  = "models"                  # Local root for all downloaded models
+MODEL_REPO = "Qwen/Qwen3-0.6B-GGUF"
+MODEL_FILE = "Qwen3-0.6B-Q8_0.gguf"
+MODEL_DIR  = "models"
 
 def download_model():
     """
-    Downloads the full Qwen3-0.6B model (safetensors) into:
-        <project-root>/models/Qwen3-0.6B/
+    Downloads the specified Qwen3-0.6B GGUF file into models/
     """
     project_root = Path(__file__).parent.parent
-    target_dir = project_root / MODEL_DIR / MODEL_REPO.split("/")[-1]  # -> models/Qwen3-0.6B
+    model_path   = project_root / MODEL_DIR
+    target_file  = model_path / MODEL_FILE
 
-    print(f"Ensuring model directory exists at: {target_dir}")
-    target_dir.mkdir(parents=True, exist_ok=True)
+    print(f"Ensuring model directory exists at: {model_path}")
+    model_path.mkdir(parents=True, exist_ok=True)
 
-    # snapshot_download pulls the *entire* repo (weights, tokenizer, configs)
-    print(f"Downloading '{MODEL_REPO}' into {target_dir} …")
+    if target_file.exists():
+        print(f"✅ Model already exists at {target_file}. Skipping download.")
+        return
+
+    print(f"Downloading {MODEL_FILE} from {MODEL_REPO}...")
     try:
-        snapshot_download(
+        hf_hub_download(
             repo_id=MODEL_REPO,
-            local_dir=str(target_dir),
+            filename=MODEL_FILE,
+            local_dir=str(model_path),
             local_dir_use_symlinks=False,
             resume_download=True,
         )
         print("\n✅ Download complete!")
-        print(f"Model saved to: {target_dir}")
+        print(f"Model saved to: {target_file}")
 
     except Exception as e:
         print(f"\n❌ An error occurred during download: {e}")
-        print("Please check your internet connection and that the repository is correct.")
+        print("Please check your internet connection and that the repository and filename are correct.")
 
 if __name__ == "__main__":
     download_model()

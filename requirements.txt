@@ -3,3 +3,5 @@ pydantic
 llama-cpp-python[metal]
 huggingface-hub
 pytest
+transformers
+torch
