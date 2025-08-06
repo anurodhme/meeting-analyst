@@ -1,0 +1,31 @@
+# File: data/sample_transcripts/demo.txt
+
+Meeting Title: Project Phoenix - Weekly Sync
+Date: August 6, 2025
+Participants: Alice (Project Manager), Bob (Lead Developer), Charlie (Marketing Lead)
+
+Alice: Alright team, let's kick off the weekly sync for Project Phoenix. Bob, what's the status on the backend integration?
+
+Bob: We've made good progress. The new authentication module is complete and deployed to staging. However, I've hit a small snag with the third-party payment gateway API. It's not behaving as the documentation suggests. I'll need to contact their support team to resolve it.
+
+Alice: Okay, thanks for the update. Can you take ownership of that, Bob? Please get it resolved by the end of the week, since it's a blocker.
+
+Bob: Will do. I'll email them today.
+
+Alice: Perfect. Charlie, how are things on the marketing front?
+
+Charlie: The new landing page copy is drafted. I need Bob's team to review it for technical accuracy before we push it live. I've sent the document link via email.
+
+Bob: I saw the email. My team can get to it, but not until next week as we are focused on the payment gateway issue.
+
+Alice: That's a fair point. Let's make a decision here. The landing page is less critical than the payment gateway. We'll officially postpone the landing page review until the payment issue is resolved. So, the new deadline for the technical review of the landing page will be EOD next Friday, August 15th. Charlie, is that acceptable?
+
+Charlie: Yes, that works for me. It gives me time to refine the graphics anyway.
+
+Alice: Great. So, to recap the decisions: the payment gateway is our top priority. The landing page review is postponed. I also want to formally decide that we will be using the 'Stripe' provider for all future payments once this integration is complete. Everyone on board?
+
+Bob: Yes.
+
+Charlie: Agreed.
+
+Alice: Okay, that's everything on my list. Any other business? No? Then let's wrap up. Good work, everyone.
