@@ -22,15 +22,18 @@ meeting-analyst/
 │   └── streamlit_app.py
 ├── data/
 │   └── sample_transcripts/
-├── models/              # GGUF model goes here (auto-downloaded)
+│       └── demo.txt
+├── models/              # GGUF model lives here (auto-downloaded)
 ├── scripts/
 │   ├── download_model.py
 │   └── test_analyst.py
 ├── src/
-│   ├── analyst.py       # Core logic
+│   ├── __init__.py      # Makes `src` a package
+│   ├── analyst.py       # Core business logic
 │   ├── prompts.py       # Prompt templates
 │   ├── schemas.py       # Pydantic models
-│   └── utils.py
+│   └── utils.py         # Helper utilities (optional)
+├── tests/               # Pytest test cases (placeholder)
 ├── requirements.txt
 ├── Makefile
 └── README.md
@@ -73,14 +76,14 @@ make test
 
 ---
 
-##  Configuration
+## Configuration
 
-| Variable        | Default                        | 
-|-----------------|--------------------------------|-------------------------------------------|
-| `MODEL_FILENAME`| `Qwen3-0.6B-Q8_0.gguf`         | 
-| `MODEL_DIR`     | `models/`                      | 
-| `n_ctx`         | `4096`                         | 
-| `chat_format`   | `chatml`                       |        
+| Variable          | Default                | Description                                                                     |
+|-------------------|------------------------|---------------------------------------------------------------------------------|
+| `MODEL_FILENAME`  | `Qwen3-0.6B-Q8_0.gguf` | Name of the GGUF weights file downloaded from Hugging Face                      |
+| `MODEL_DIR`       | `models/`              | Directory where the model file is stored                                        |
+| `n_ctx`           | `4096`                 | Context window size (max tokens the model can see)                              |
+| `chat_format`     | `chatml`               | Chat template required by Qwen-3 models                                         |
 
 Change these in `app/streamlit_app.py` or `scripts/download_model.py` as needed.
 
