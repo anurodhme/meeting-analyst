@@ -19,9 +19,10 @@ class Analyst:
     def __init__(self, model_path: str):
         self.llm = Llama(
             model_path=model_path,
-            n_ctx=4096,          # adjust if your meetings are longer
+            n_ctx=4096,   
+            n_gpu_layers=-1,       
             verbose=False,
-            chat_format="chatml"  # Qwen models use ChatML
+            chat_format="chatml"  
         )
 
     # --------------- internal helper ---------------
@@ -66,6 +67,6 @@ class Analyst:
         return items
 
 if __name__ == "__main__":
-    agent = Analyst(model_path="/Users/anurodhbudhathoki/meeting-analyst/models/Qwen3-0.6B-Q8_0.gguf")
+    agent = Analyst(model_path="/Users/anurodhbudhathoki/meeting-analyst/models/Qwen3-0.6B-Q8_0.gguf", verbose=True)
     transcript = open("data/sample_transcripts/demo.txt").read()
     print(agent.summarize(transcript))
