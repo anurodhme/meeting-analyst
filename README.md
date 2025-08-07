@@ -75,12 +75,12 @@ make test
 
 ##  Configuration
 
-| Variable        | Default                        | Description                               |
+| Variable        | Default                        | 
 |-----------------|--------------------------------|-------------------------------------------|
-| `MODEL_FILENAME`| `Qwen3-0.6B-Q8_0.gguf`         | GGUF weight file name                     |
-| `MODEL_DIR`     | `models/`                      | Folder where the model is stored          |
-| `n_ctx`         | `4096`                         | Context window size for the model         |
-| `chat_format`   | `chatml`                       | Required format for Qwen-3 models         |
+| `MODEL_FILENAME`| `Qwen3-0.6B-Q8_0.gguf`         | 
+| `MODEL_DIR`     | `models/`                      | 
+| `n_ctx`         | `4096`                         | 
+| `chat_format`   | `chatml`                       |        
 
 Change these in `app/streamlit_app.py` or `scripts/download_model.py` as needed.
 
